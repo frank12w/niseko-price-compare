@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二世谷滑雪課程比價｜雪徑 SnowTrail</title>
+<meta name="description" content="比較二世谷九間滑雪學校（Chase4Snow、Snowman、Snow and Flow、Pinnacle、Fuyu、Snow+、Baddies、GoSnow、NISS）的私人課程價格，依日期、全天/半天、上課人數、指定教練等級自由調整。">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  input[type=range]#date-bar {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 9999px;
+    outline: none;
+    background: transparent;
+  }
+  input[type=range]#date-bar::-webkit-slider-runnable-track {
+    height: 14px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  input[type=range]#date-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid #0284c7;
+    cursor: pointer;
+    margin-top: -8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: transform 0.1s ease;
+  }
+  input[type=range]#date-bar::-webkit-slider-thumb:hover { transform: scale(1.2); }
+  input[type=range]#date-bar::-moz-range-track { height: 14px; border-radius: 9999px; }
+  input[type=range]#date-bar::-moz-range-thumb {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #fff; border: 3px solid #0284c7; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo">🏔️ 雪徑 <span>SnowTrail</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">課程比價</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="page-header">
+  <p class="section-eyebrow">Niseko Ski School Price Comparison</p>
+  <h1>二世谷滑雪課程比價系統</h1>
+  <p>拖曳下方控制面板調整日期、全天/半天、上課人數與指定教練等級，即時比較 9 間二世谷滑雪學校的私人課程報價。</p>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- ===== 深色即時比價儀表板 ===== -->
+    <div class="max-w-6xl mx-auto w-full space-y-2">
+
+      <div class="flex justify-between items-center flex-wrap gap-3">
+        <h3 class="text-3xl md:text-4xl font-extrabold text-sky-400 tracking-tight flex items-center gap-2">
+          ⛷️ 即時比價引擎
+        </h3>
+        <span class="text-lg md:text-xl font-mono px-4 py-2 rounded-full bg-emerald-900/60 text-emerald-400 border border-emerald-700/50">
+          🟢 本地即時運算（無後端 API）
+        </span>
+      </div>
+
+      <!-- 圖表主要展示區 -->
+      <main class="bg-gradient-to-br from-slate-800/70 via-slate-800/40 to-slate-900/70 rounded-2xl p-2 border border-slate-700/60 shadow-2xl relative overflow-hidden inline-block w-full">
+        <div class="pointer-events-none absolute -top-16 -left-16 w-48 h-48 rounded-full bg-sky-500/10 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-emerald-500/10 blur-3xl"></div>
+        <div id="loading-spinner" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm z-10 flex items-center justify-center rounded-2xl transition-opacity duration-200 opacity-0 pointer-events-none">
+          <div class="text-sky-400 font-mono text-sm flex items-center gap-2">
+            <svg class="animate-spin h-5 w-5 text-sky-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            即時計算中...
+          </div>
+        </div>
+        <div id="chart-container" class="w-full h-[300px] md:h-[360px] relative"></div>
+      </main>
+
+      <!-- 控制面板 -->
+      <section class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80 shadow-lg space-y-6">
+
+        <div class="grid grid-cols-1 md:grid-cols-[7fr_3fr] gap-8">
+          <!-- 日期滑條（背景為依真實資料算出的價格熱力圖） -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center flex-wrap gap-2">
+              <label for="date-bar" class="text-xl md:text-2xl font-semibold text-sky-400 flex items-center gap-2">
+                📅 上課日期
+              </label>
+              <span id="date-val" class="text-xl md:text-2xl font-mono font-bold bg-sky-900/80 text-sky-300 px-4 py-1.5 rounded-md border border-sky-700"></span>
+            </div>
+            <input type="range" id="date-bar" min="0" max="1" value="0" step="1" class="w-full h-3 rounded-lg cursor-pointer mt-3">
+            <div id="date-ticks" class="relative h-4 text-sm md:text-base text-slate-500 font-mono"></div>
+            <div class="flex justify-between text-base md:text-lg text-slate-400 font-mono px-0.5">
+              <span>2026/12/01</span>
+              <span>2027/04/30</span>
+            </div>
+          </div>
+
+          <!-- 全天 / 半天 切換（改為與其他滑桿一致的長條 bar 樣式） -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <label class="text-xl md:text-2xl font-semibold text-cyan-400 flex items-center gap-2">⏱️ 上課時數</label>
+              <span id="hours-val" class="text-xl md:text-2xl font-mono font-bold bg-cyan-900/80 text-cyan-300 px-4 py-1.5 rounded-md border border-cyan-700"></span>
+            </div>
+            <input type="range" id="duration-bar" min="0" max="1" value="1" step="1" class="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-400 mt-3">
+            <div class="flex justify-between text-base md:text-lg text-slate-400 font-mono px-0.5">
+              <span>🌤️ 半天</span><span>☀️ 全天</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-[6fr_4fr] gap-8 pt-4 border-t border-slate-700/50">
+          <!-- 上課人數 -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <label for="ppl-bar" class="text-xl md:text-2xl font-semibold text-emerald-400 flex items-center gap-2">👥 上課人數</label>
+              <span id="ppl-val" class="text-xl md:text-2xl font-mono font-bold bg-emerald-900/80 text-emerald-300 px-4 py-1.5 rounded-md border border-emerald-700"></span>
+            </div>
+            <input type="range" id="ppl-bar" min="1" max="6" value="2" step="1" class="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-400 mt-3">
+            <div class="flex justify-between text-base md:text-lg text-slate-400 font-mono px-0.5">
+              <span>1人</span><span>2人</span><span>3人</span><span>4人</span><span>5人</span><span>6人</span>
+            </div>
+          </div>
+
+          <!-- 教練等級 -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <label for="level-bar" class="text-xl md:text-2xl font-semibold text-amber-400 flex items-center gap-2">🎯 教練等級</label>
+              <span id="level-val" class="text-xl md:text-2xl font-mono font-bold bg-amber-900/80 text-amber-300 px-4 py-1.5 rounded-md border border-amber-700"></span>
+            </div>
+            <input type="range" id="level-bar" min="0" max="3" value="0" step="1" class="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-amber-400 mt-3">
+            <div class="flex justify-between text-base md:text-lg text-slate-400 font-mono px-0.5">
+              <span>不指定</span><span>Lv1</span><span>Lv2</span><span>Lv3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-700/50 flex justify-between items-center flex-wrap gap-3">
+          <p class="text-base md:text-lg text-slate-400 leading-relaxed max-w-xl">
+            長條圖上「N/A」代表此條件組合在該校官網查無公開報價（不做推算），並非免費或零元。
+          </p>
+          <button id="reset-btn" class="text-lg md:text-xl font-bold px-6 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-200 transition-colors">重設條件</button>
+        </div>
+      </section>
+
+      <!-- 各校報價明細（深色風格，對應圖表） -->
+      <section class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80 shadow-lg">
+        <h4 class="text-2xl font-bold text-slate-200 mb-4">各校報價明細與備註</h4>
+        <ul id="notesList" class="space-y-3 text-lg text-slate-300"></ul>
+      </section>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid" style="grid-template-columns: 2fr 1fr;">
+    <div>
+      <h4>🏔️ 雪徑 SnowTrail</h4>
+      <p>二世谷滑雪學校課程比價系統。</p>
+    </div>
+    <div>
+      <h4>聯絡我們</h4>
+      <p>hello@snowtrail.example</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 雪徑 SnowTrail. All rights reserved.</span>
+    <span>比價數據僅供參考，實際報價請以各校官網為準。</span>
+  </div>
+</footer>
+
+<script src="compare-data.js"></script>
+<script src="compare-app.js"></script>
+
+</body>
+</html>

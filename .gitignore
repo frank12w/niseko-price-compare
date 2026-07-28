@@ -1,0 +1,21 @@
+# 環境變數 / 機密設定（未來後端、爬蟲用）
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Python（爬蟲）
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 編輯器/系統雜項
+.DS_Store
+Thumbs.db
+.vscode/
