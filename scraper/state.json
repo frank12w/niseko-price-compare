@@ -2,19 +2,19 @@
   "chase4snow": {
     "url": "https://chaseforsnow.com/lessons-niseko-en/",
     "hash": "5127d4ca8c0018c7aca25f24b8247d25c6a786201563b219bf66fcde986274af",
-    "last_checked_at": "2026-07-28T10:18:33.787577+00:00",
+    "last_checked_at": "2026-07-28T10:23:00.943024+00:00",
     "last_changed_at": null
   },
   "snowman": {
     "url": "https://snowman-club.com/pricing/",
     "hash": "9414a2109542c8a8741e16e6423bef05b254d186516bbe93d867d74769178471",
-    "last_checked_at": "2026-07-28T10:18:35.326498+00:00",
+    "last_checked_at": "2026-07-28T10:23:02.956879+00:00",
     "last_changed_at": null
   },
   "snowandflow": {
     "url": "https://www.snowandflow.com/lesson-en",
     "hash": "210f9f514a0bab42c6ddc904267fc82bee92aa2c5854bf6984bf42ca4cc27936",
-    "last_checked_at": "2026-07-28T10:18:36.337468+00:00",
+    "last_checked_at": "2026-07-28T10:23:03.582847+00:00",
     "last_changed_at": null
   },
   "pinnacle": {
@@ -26,19 +26,19 @@
   "fuyu": {
     "url": "https://www.fuyuski.co/en/courses",
     "hash": "eb65a70541ac6a4a1d43a9169a0932d4a2d2dfe77226e85dd78d5af9dff8c1d0",
-    "last_checked_at": "2026-07-28T10:18:37.001784+00:00",
+    "last_checked_at": "2026-07-28T10:23:44.074101+00:00",
     "last_changed_at": null
   },
   "baddies": {
     "url": "https://www.thebaddiesxx.com/lesson-price",
     "hash": "e0d2cd70b6a8fa92cdc0d1afc545b32c7cd11eb0234550a5091f08304eb4db4c",
-    "last_checked_at": "2026-07-28T10:18:37.272964+00:00",
+    "last_checked_at": "2026-07-28T10:23:44.456569+00:00",
     "last_changed_at": null
   },
   "niss": {
     "url": "https://hanazononiseko.com/en/winter/ski-school/private",
     "hash": "aa34931ecbb73f92aec77b4fd70916008265c8f4811a79afa51b0969c3d92025",
-    "last_checked_at": "2026-07-28T10:18:37.521243+00:00",
+    "last_checked_at": "2026-07-28T10:23:44.928523+00:00",
     "last_changed_at": null
   }
 }
