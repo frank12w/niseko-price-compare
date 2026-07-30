@@ -73,7 +73,11 @@ def send_email(changed: list, errors: list) -> None:
     smtp_port = int(os.environ.get("SMTP_PORT") or "587")
     smtp_username = os.environ["SMTP_USERNAME"]
     smtp_password = os.environ["SMTP_PASSWORD"]
-    email_to = os.environ.get("EMAIL_TO", smtp_username)
+    # 寄件人一定要是在 Brevo 後台「Senders」驗證過的信箱，不能用 SMTP 登入帳號
+    # （那組 xxxxx@smtp-brevo.com 只是認證用的技術帳號，不是真的寄件地址，
+    # 直接拿來當 From 會被 Brevo 悄悄丟棄或砲進垃圾信）
+    email_from = os.environ.get("EMAIL_FROM") or smtp_username
+    email_to = os.environ.get("EMAIL_TO", email_from)
 
     lines = ["以下學校的報價頁面內容有變動，請人工確認實際價格後更新比價網站：", ""]
     for item in changed:
@@ -88,13 +92,13 @@ def send_email(changed: list, errors: list) -> None:
     body = "\n".join(lines)
     msg = MIMEText(body, "plain", "utf-8")
     msg["Subject"] = f"[雪徑 SnowTrail] 本週有 {len(changed)} 間學校報價頁面變動"
-    msg["From"] = smtp_username
+    msg["From"] = email_from
     msg["To"] = email_to
 
     with smtplib.SMTP(smtp_server, smtp_port) as server:
         server.starttls()
         server.login(smtp_username, smtp_password)
-        server.sendmail(smtp_username, [email_to], msg.as_string())
+        server.sendmail(email_from, [email_to], msg.as_string())
 
 
 def main() -> int:
