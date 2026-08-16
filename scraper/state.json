@@ -2,43 +2,43 @@
   "chase4snow": {
     "url": "https://chaseforsnow.com/lessons-niseko-en/",
     "hash": "5127d4ca8c0018c7aca25f24b8247d25c6a786201563b219bf66fcde986274af",
-    "last_checked_at": "2026-08-09T21:22:37.182116+00:00",
+    "last_checked_at": "2026-08-16T21:12:08.239512+00:00",
     "last_changed_at": null
   },
   "snowman": {
     "url": "https://snowman-club.com/pricing/",
     "hash": "9414a2109542c8a8741e16e6423bef05b254d186516bbe93d867d74769178471",
-    "last_checked_at": "2026-08-09T21:22:39.835933+00:00",
+    "last_checked_at": "2026-08-16T21:12:10.609083+00:00",
     "last_changed_at": null
   },
   "snowandflow": {
     "url": "https://www.snowandflow.com/lesson-en",
     "hash": "8dba3c221341ab1227a765596089b0a02eb43c23e4acd9359cf43b5fc53bfc0e",
-    "last_checked_at": "2026-08-09T21:22:40.443350+00:00",
+    "last_checked_at": "2026-08-16T21:12:11.864395+00:00",
     "last_changed_at": "2026-08-09T21:22:40.443350+00:00"
   },
   "pinnacle": {
     "url": "https://pinnacle-snow.com/private-ski-snowboard-lessons/",
     "hash": "85ba7a538f82c725b698c72cb485008fec6f48c3d37b9c5589ba5b03ff1446b0",
-    "last_checked_at": "2026-08-09T21:22:40.729490+00:00",
+    "last_checked_at": "2026-08-16T21:12:12.040138+00:00",
     "last_changed_at": "2026-08-02T21:45:41.075152+00:00"
   },
   "fuyu": {
     "url": "https://www.fuyuski.co/en/courses",
     "hash": "eb65a70541ac6a4a1d43a9169a0932d4a2d2dfe77226e85dd78d5af9dff8c1d0",
-    "last_checked_at": "2026-08-09T21:22:41.133520+00:00",
+    "last_checked_at": "2026-08-16T21:12:12.602011+00:00",
     "last_changed_at": null
   },
   "baddies": {
     "url": "https://www.thebaddiesxx.com/lesson-price",
     "hash": "e0d2cd70b6a8fa92cdc0d1afc545b32c7cd11eb0234550a5091f08304eb4db4c",
-    "last_checked_at": "2026-08-09T21:22:41.375756+00:00",
+    "last_checked_at": "2026-08-16T21:12:12.860624+00:00",
     "last_changed_at": null
   },
   "niss": {
     "url": "https://hanazononiseko.com/en/winter/ski-school/private",
     "hash": "dd7773a8655b7f8ff68d6b487fdfbed96131897e030ce7ae5114f3cc8ab65ba5",
-    "last_checked_at": "2026-08-09T21:22:42.020661+00:00",
+    "last_checked_at": "2026-08-16T21:12:13.175101+00:00",
     "last_changed_at": "2026-08-09T21:22:42.020661+00:00"
   }
 }
