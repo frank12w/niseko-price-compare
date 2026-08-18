@@ -79,9 +79,12 @@ def send_email(changed: list, errors: list) -> None:
     email_from = os.environ.get("EMAIL_FROM") or smtp_username
     email_to = os.environ.get("EMAIL_TO", email_from)
 
-    lines = ["以下學校的報價頁面內容有變動，請人工確認實際價格後更新比價網站：", ""]
-    for item in changed:
-        lines.append(f"- {item['name']}：{item['url']}")
+    if changed:
+        lines = ["以下學校的報價頁面內容有變動，請人工確認實際價格後更新比價網站：", ""]
+        for item in changed:
+            lines.append(f"- {item['name']}：{item['url']}")
+    else:
+        lines = ["本週所有學校頁面內容皆無變動，不用做任何事。", ""]
 
     if errors:
         lines.append("")
@@ -91,7 +94,13 @@ def send_email(changed: list, errors: list) -> None:
 
     body = "\n".join(lines)
     msg = MIMEText(body, "plain", "utf-8")
-    msg["Subject"] = f"[雪徑 SnowTrail] 本週有 {len(changed)} 間學校報價頁面變動"
+    if changed:
+        subject_status = f"{len(changed)} 間學校報價頁面變動"
+    elif errors:
+        subject_status = f"{len(errors)} 間抓取失敗，其餘無變動"
+    else:
+        subject_status = "本週無變動"
+    msg["Subject"] = f"[雪徑 SnowTrail] {subject_status}"
     msg["From"] = email_from
     msg["To"] = email_to
 
@@ -131,15 +140,13 @@ def main() -> int:
 
     save_state(state)
 
-    if changed or errors:
-        try:
-            send_email(changed, errors)
-            print("已寄出通知信")
-        except Exception as e:
-            print(f"[警告] 寄信失敗：{e}", file=sys.stderr)
-            return 1
-    else:
-        print("本次無任何變動，不寄信")
+    # 不管有沒有變動都寄信，讓你確定排程有正常執行
+    try:
+        send_email(changed, errors)
+        print("已寄出通知信")
+    except Exception as e:
+        print(f"[警告] 寄信失敗：{e}", file=sys.stderr)
+        return 1
 
     return 0
 
