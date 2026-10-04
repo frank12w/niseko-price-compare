@@ -2,19 +2,19 @@
   "chase4snow": {
     "url": "https://chaseforsnow.com/lessons-niseko-en/",
     "hash": "7a2064c7f9d3d3fabd5493ab5e465add0573d5dacbda3e2e9881be5a58fc2cbb",
-    "last_checked_at": "2026-09-27T23:30:29.696410+00:00",
+    "last_checked_at": "2026-10-04T23:43:20.846379+00:00",
     "last_changed_at": "2026-08-23T21:13:12.562072+00:00"
   },
   "snowman": {
     "url": "https://snowman-club.com/pricing/",
     "hash": "98be2b09e027e11ce0fb81d109267ddccf8ea0e9156d9a3d7d74054c68d7c0e6",
-    "last_checked_at": "2026-09-27T23:30:32.303918+00:00",
+    "last_checked_at": "2026-10-04T23:43:22.468940+00:00",
     "last_changed_at": "2026-09-27T23:30:32.303918+00:00"
   },
   "snowandflow": {
     "url": "https://www.snowandflow.com/lesson-en",
     "hash": "c2e78e8591fa66113dea7d9f172da9016923335d5b8dcc1933622bf50d510020",
-    "last_checked_at": "2026-09-27T23:30:33.208980+00:00",
+    "last_checked_at": "2026-10-04T23:43:24.020275+00:00",
     "last_changed_at": "2026-09-27T23:30:33.208980+00:00"
   },
   "pinnacle": {
@@ -25,20 +25,20 @@
   },
   "fuyu": {
     "url": "https://www.fuyuski.co/en/courses",
-    "hash": "5ac6b53462d0485f3dbdf72a64cf1aa99a84e48ff5e1c7101a46666e873ed64b",
-    "last_checked_at": "2026-09-27T23:30:34.563361+00:00",
-    "last_changed_at": "2026-09-27T23:30:34.563361+00:00"
+    "hash": "91663935996cf4efc77accf0313b2b51bd3585af46be2e7bc78465fe3ba59541",
+    "last_checked_at": "2026-10-04T23:43:24.751917+00:00",
+    "last_changed_at": "2026-10-04T23:43:24.751917+00:00"
   },
   "baddies": {
     "url": "https://www.thebaddiesxx.com/lesson-price",
     "hash": "651c4b22e0bf6d2e19cc26ffbaa590dbdcbcd4fc252a34ecfcd411c46e7a5ec7",
-    "last_checked_at": "2026-09-27T23:30:34.808521+00:00",
+    "last_checked_at": "2026-10-04T23:43:25.114621+00:00",
     "last_changed_at": "2026-08-23T21:13:36.664390+00:00"
   },
   "niss": {
     "url": "https://hanazononiseko.com/en/winter/ski-school/private",
     "hash": "9130726a9e304cab9ec0be0da2611022b0023a07cb70bc8cb0df1b47068900ac",
-    "last_checked_at": "2026-09-27T23:30:35.123517+00:00",
+    "last_checked_at": "2026-10-04T23:43:25.870047+00:00",
     "last_changed_at": "2026-09-06T22:34:36.110450+00:00"
   }
 }
